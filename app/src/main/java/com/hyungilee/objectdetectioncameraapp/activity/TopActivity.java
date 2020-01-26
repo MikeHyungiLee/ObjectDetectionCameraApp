@@ -1,10 +1,12 @@
-package com.hyungilee.objectdetectioncameraapp;
+package com.hyungilee.objectdetectioncameraapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.hyungilee.objectdetectioncameraapp.R;
+
+public class TopActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
