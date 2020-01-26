@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ObjectDetectionCameraApp</string>
+    <!--TopActivity-->
+    <string name="takePic">撮影</string>
+    <string name="picHistory">撮影履歴</string>
+    <string name="settings">設定</string>
 </resources>
