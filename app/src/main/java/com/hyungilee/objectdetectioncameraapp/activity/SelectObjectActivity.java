@@ -2,7 +2,7 @@
  *@file  SelectObjectActivity.java
  *@brief メイン画面で撮影ボタンをクリックした後に見えるリストビュー画面を処理するクラス
  *
- *@author  CLINK Co.,Ltd.
+ * @author Hyungi Lee(李鉉基)
  *@date 2018.10.17
  */
 

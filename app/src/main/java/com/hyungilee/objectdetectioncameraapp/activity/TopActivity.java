@@ -79,6 +79,8 @@ public class TopActivity extends AppCompatActivity implements Button.OnClickList
 
             // 撮影物を選ぶ画面に移動
             case R.id.btnCamera:
+                Intent cameraIntent = new Intent(this, SelectObjectActivity.class);
+                startActivity(cameraIntent);
                 break;
 
             // 撮影履歴画面に移動
