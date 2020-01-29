@@ -4,4 +4,36 @@
     <string name="takePic">撮影</string>
     <string name="picHistory">撮影履歴</string>
     <string name="settings">設定</string>
+    <string name="list1">Item 1</string>
+    <string name="list2">Item 2</string>
+    <string name="list3">Item 3</string>
+    <string name="list4">Item 4</string>
+    <string name="list5">Item 5</string>
+    <string name="list6">Item 6</string>
+
+    <!--CameraPreviewActivity-->
+    <string name="dateFormat">yyyyMMdd HHmm</string>
+    <string name="pictureExtension">.jpg</string>
+    <string name="item">検査項目</string>
+
+    <!--PictureCheckActivity-->
+    <string name="reshot">再撮影</string>
+    <string name="save">保存</string>
+    <string name="latitude">緯度 </string>
+    <string name="longitude">経度</string>
+    <string name="object">検査物品</string>
+    <string name="check">確認</string>
+    <string name="csvMsg">CSVファイルを出力しました。</string>
+    <string name="deleteMsg">データを削除します。</string>
+    <string name="cancel">取消</string>
+    <string name="returnMsg">メイン画面に戻ります。</string>
+    <string name="locationMsg">位置情報がないです。</string>
+    <string name="permissionMsg">カメラの機能許可問題のためにカメラを起動できません。</string>
+    <string name="date">撮影日時</string>
+    <string name="percentage">確信度</string>
+    <string name="location">位置情報</string>
+
+    <!--SelectObjectActivity-->
+    <string name="selectMenu">検査項目選択</string>
+
 </resources>
