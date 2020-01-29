@@ -8,26 +8,35 @@
 
 package com.hyungilee.objectdetectioncameraapp.activity;
 
+import android.content.Intent;
+import android.os.Bundle;
+
+import android.view.MenuItem;
+
+import androidx.annotation.Nullable;
+
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.os.Bundle;
-
 import com.hyungilee.objectdetectioncameraapp.R;
 import com.hyungilee.objectdetectioncameraapp.fragment.ObjectListFragment;
 
+
 /**
- * @brief アプリのトップ画面
+ * @brief リストビューを含むフレグメントで構成されるレイアウトを表示するクラス
  *
  * @par 概要
- * アプリのメイン画面として、Splash以後に現れる。
- * 撮影、撮影履歴、設定のメニューボタンを持つ。
+ * 基本的に画面の上段にナビゲーションバーを含んでいます。
+ * レイアウトのフラグメント部分には二つのリストビューがreplaceされて表示します。
  */
 public class SelectObjectActivity extends AppCompatActivity {
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_object);
 
@@ -39,5 +48,26 @@ public class SelectObjectActivity extends AppCompatActivity {
 
             transaction.commit();
         }
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
+
+        /* menu barの名前を指定 */
+        actionBar.setTitle(R.string.selectMenu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //ネビゲーションの"戻る"ボタンを押すと,検査項目名を保存したまま次の画面を起動します。
+        switch(item.getItemId()){
+            case android.R.id.home://"戻る"ボタンを押す場合の処理イベント
+                Intent intent=new Intent(SelectObjectActivity.this,TopActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
