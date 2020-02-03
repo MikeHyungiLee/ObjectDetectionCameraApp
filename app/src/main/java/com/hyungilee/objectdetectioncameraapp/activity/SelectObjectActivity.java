@@ -3,7 +3,7 @@
  *@brief メイン画面で撮影ボタンをクリックした後に見えるリストビュー画面を処理するクラス
  *
  * @author Hyungi Lee(李鉉基)
- *@date 2018.10.17
+ * @date 2020/01/26
  */
 
 package com.hyungilee.objectdetectioncameraapp.activity;
@@ -20,7 +20,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import com.hyungilee.objectdetectioncameraapp.R;
 import com.hyungilee.objectdetectioncameraapp.fragment.ObjectListFragment;
 
@@ -37,6 +36,7 @@ public class SelectObjectActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_object);
 
@@ -70,5 +70,4 @@ public class SelectObjectActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
