@@ -257,11 +257,19 @@ public class PictureCheckActivity extends AppCompatActivity {
         /** 確信度 */
         Double picPercentage = Double.parseDouble(certainty_factor.getText().toString());
 
-        /** 位置情報(緯度) */
-        Double picLat = Double.parseDouble(latitude.getText().toString());
+        Double picLat=0.0d;
+        Double picLong=0.0d;
 
-        /*位置情報(軽度)*/
-        Double picLong = Double.parseDouble(longitude.getText().toString());
+        try{
+            /** 位置情報(緯度) */
+            picLat = Double.parseDouble(latitude.getText().toString());
+            /*位置情報(軽度)*/
+            picLong = Double.parseDouble(longitude.getText().toString());
+        }catch(NumberFormatException e){
+            e.printStackTrace();
+            picLat=0.0d;
+            picLat=0.0d;
+        }
 
         /** 生成されたテーブルに情報を書けるようにする */
         SQLiteDatabase db = dbHelper.getWritableDatabase();
