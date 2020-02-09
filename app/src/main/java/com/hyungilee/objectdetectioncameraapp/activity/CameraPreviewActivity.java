@@ -34,6 +34,7 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -157,7 +158,7 @@ public class CameraPreviewActivity extends AppCompatActivity {
         textureView=(TextureView)findViewById(R.id.textureView);
 
         /*写真を撮るボタン変数*/
-        Button btnCapture = findViewById(R.id.btnCapture);
+        ImageView btnCapture = findViewById(R.id.btnCapture);
 
         /* 写真を撮るボタンのイベント処理 */
         btnCapture.setOnClickListener(new View.OnClickListener(){
