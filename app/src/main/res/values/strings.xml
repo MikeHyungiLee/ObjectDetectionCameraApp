@@ -36,4 +36,11 @@
     <!--SelectObjectActivity-->
     <string name="selectMenu">検査項目選択</string>
 
+    <!--HistoryActivity-->
+    <string name="csv">CSV出力</string>
+    <string name="delete">削除</string>
+    <string name="csvExtension">_data.csv</string>
+    <string name="sample">Sample Text</string>
+    <string name="history">撮影履歴</string>
+
 </resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.HistoryActivity">
+
+    <!--CSVファイル出力するボタン-->
+    <Button
+        android:id="@+id/btnPushCsv"
+        android:background="#00a3cc"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        android:text="@string/csv"/>
+
+    <!--データがない時表示されるテキスト-->
+    <TextView
+        android:id="@+id/emptyTextView"
+        android:text="データがありません"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+    <!--撮影履歴のListView-->
+    <ListView
+        android:id="@+id/historyList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+
+</LinearLayout>
