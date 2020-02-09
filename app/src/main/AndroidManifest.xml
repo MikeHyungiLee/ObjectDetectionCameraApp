@@ -23,6 +23,12 @@
         <activity android:name=".activity.PictureCheckActivity"
             android:theme="@style/AppTheme"/>
 
+        <activity android:name=".activity.HistoryActivity"
+            android:theme="@style/AppTheme"/>
+
+        <activity android:name=".activity.HistoryDetailActivity"
+            android:theme="@style/AppTheme"/>
+
         <activity
             android:name=".activity.TopActivity"
             android:screenOrientation="fullSensor"
