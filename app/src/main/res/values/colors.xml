@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#263238</color>
     <color name="colorAccent">#009688</color>
     <color name="colorBack">#ffff</color>
+    <!--Transparent color-->
+    <color name="transparent_red">#66FF0000</color>
 </resources>
