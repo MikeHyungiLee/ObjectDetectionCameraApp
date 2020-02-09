@@ -85,11 +85,14 @@ public class TopActivity extends AppCompatActivity implements Button.OnClickList
 
             // 撮影履歴画面に移動
             case R.id.btnHistory:
+                Intent historyIntent = new Intent(this, HistoryActivity.class);
+                startActivity(historyIntent);
                 break;
 
             // 設定画面に移動
             case R.id.btnSettings:
                 break;
+
         }
     }
 

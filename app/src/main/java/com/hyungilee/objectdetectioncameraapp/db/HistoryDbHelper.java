@@ -54,7 +54,6 @@ public class HistoryDbHelper extends SQLiteOpenHelper {
                 HistoryDatabase.HistoryEntry.COL_HISTORY_PERCENTAGE + " INTEGER NOT NULL," +
                 HistoryDatabase.HistoryEntry.COL_HISTORY_LATITUDE + " INTEGER NOT NULL," +
                 HistoryDatabase.HistoryEntry.COL_HISTORY_LONGITUDE + " INTEGER NOT NULL);";
-
         db.execSQL(createTable);
     }
 
