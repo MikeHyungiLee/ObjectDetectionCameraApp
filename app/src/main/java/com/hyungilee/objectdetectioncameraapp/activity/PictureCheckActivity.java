@@ -110,7 +110,6 @@ public class PictureCheckActivity extends AppCompatActivity {
         imageview=(ImageView)findViewById(R.id.picture);
         date = (TextView)findViewById(R.id.date);
         inspection_item = (TextView)findViewById(R.id.inspection_item);
-        certainty_factor = (TextView)findViewById(R.id.certainty_factor);
         latitude = (TextView)findViewById(R.id.latitude);
         longitude = (TextView)findViewById(R.id.longitude);
         dateText=(TextView)findViewById(R.id.date);
