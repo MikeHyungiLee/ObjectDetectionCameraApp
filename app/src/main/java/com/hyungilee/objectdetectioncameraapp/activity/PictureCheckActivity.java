@@ -135,9 +135,6 @@ public class PictureCheckActivity extends AppCompatActivity {
         /*選択した項目名を表記する。*/
         inspection_item.setText(menu);
 
-        /** 確信度を表示する。*/
-        certainty_factor.setText(Double.toString(99.9));
-
         /*写真を撮った後,保存されたファイル経路を利用してdecodeFileを利用してBitmapファイルに変換します。
         その後,写真をImageViewに表示します。*/
         File imgFile=new File(path);
