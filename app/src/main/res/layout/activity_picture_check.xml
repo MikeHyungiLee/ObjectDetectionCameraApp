@@ -1,156 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <!--撮った写真のImageView-->
-    <ImageView
-        android:id="@+id/picture"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:src="@drawable/camera" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/date"
-        android:textColor="#ff000000"
-        android:layout_marginLeft="60dp"/>
 
     <!--撮影日時(今は任意データ)-->
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#ff000000"
-        android:layout_marginLeft="80dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/item"
-        android:textColor="#ff000000"
-        android:layout_marginLeft="60dp"/>
 
     <!--検査項目(今は任意でアンカ)-->
+
+    <!--確信度(今は任意データ)-->
+
+    <ImageView
+        android:id="@+id/picture"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/camera"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/location"
+        android:textColor="#ff000000"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnRetake"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/latitude"
+        android:textColor="#ff000000"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView6"
+        app:layout_constraintEnd_toStartOf="@+id/latitude"
+        app:layout_constraintHorizontal_bias="0.68"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/longitude"
+        android:textColor="#ff000000"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView7"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/item"
+        android:textColor="#ff000000"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toStartOf="@+id/inspection_item"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/picture" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/date"
+        android:textColor="#ff000000"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
     <TextView
         android:id="@+id/inspection_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="アンカ"
+        android:layout_marginEnd="108dp"
+        android:text="item6"
         android:textColor="#ff000000"
-        android:layout_marginLeft="80dp"/>
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView3" />
 
     <TextView
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/object"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="52dp"
         android:textColor="#ff000000"
-        android:layout_marginLeft="60dp"/>
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="2020/02/09" />
+
+
+    <!--位置情報(緯度)-->
+
+
+    <!--位置情報(軽度)-->
 
     <TextView
-        android:id="@+id/inspection_object"
+        android:id="@+id/latitude"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="アンカ"
-        android:textColor="#ff000000"
-        android:layout_marginLeft="80dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/percentage"
-        android:textColor="#ff000000"
-        android:layout_marginLeft="60dp"/>
-
-    <!--確信度(今は任意データ)-->
-    <TextView
-        android:id="@+id/certainty_factor"
+        android:layout_marginEnd="52dp"
         android:inputType="numberDecimal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:text="0.0"
         android:textColor="#ff000000"
-        android:layout_marginLeft="80dp"/>
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView7"
+        tools:text="0.0" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/location"
-        android:textColor="#ff000000"
-        android:layout_marginLeft="60dp"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/latitude"
-            android:textColor="#ff000000"
-            android:layout_marginLeft="80dp" />
-
-        <!--位置情報(緯度)-->
-        <TextView
-            android:id="@+id/latitude"
-            android:inputType="numberDecimal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ff000000"
-            android:layout_marginLeft="5dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/longitude"
-            android:textColor="#ff000000"
-            android:layout_marginLeft="80dp"/>
-
-        <!--位置情報(軽度)-->
-        <TextView
-            android:id="@+id/longitude"
-            android:inputType="numberDecimal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ff000000"
-            android:layout_marginLeft="5dp" />
-
-    </LinearLayout>
 
     <!--再撮影のボタン-->
+
+    <!--保存ボタン-->
+
+    <TextView
+        android:id="@+id/longitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:text="0.0"
+        android:textColor="#ff000000"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/latitude"
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="0.0" />
+
     <Button
         android:id="@+id/btnRetake"
-        android:layout_width="158dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="35dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/reshot_button"
         android:onClick="onClick"
         android:text="@string/reshot"
-        android:textSize="20dp" />
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-    <!--保存ボタン-->
     <Button
         android:id="@+id/btnSave"
-        android:layout_width="236dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/save_button"
-        android:layout_marginTop="4dp"
-        android:text="@string/save"
         android:onClick="onClick"
-        android:textSize="20dp" />
+        android:text="@string/save"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRetake"
+        app:layout_constraintVertical_bias="0.365" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
