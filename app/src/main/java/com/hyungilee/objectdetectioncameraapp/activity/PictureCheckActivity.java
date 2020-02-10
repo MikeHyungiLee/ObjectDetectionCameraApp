@@ -110,7 +110,6 @@ public class PictureCheckActivity extends AppCompatActivity {
         imageview=(ImageView)findViewById(R.id.picture);
         date = (TextView)findViewById(R.id.date);
         inspection_item = (TextView)findViewById(R.id.inspection_item);
-        inspection_object=(TextView)findViewById(R.id.inspection_object);
         certainty_factor = (TextView)findViewById(R.id.certainty_factor);
         latitude = (TextView)findViewById(R.id.latitude);
         longitude = (TextView)findViewById(R.id.longitude);
@@ -136,9 +135,6 @@ public class PictureCheckActivity extends AppCompatActivity {
 
         /*選択した項目名を表記する。*/
         inspection_item.setText(menu);
-
-        /*選択した検査物品を表記する。*/
-        inspection_object.setText(menu);
 
         /** 確信度を表示する。*/
         certainty_factor.setText(Double.toString(99.9));
