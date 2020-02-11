@@ -113,6 +113,8 @@ public class PictureCheckActivity extends AppCompatActivity {
         latitude = (TextView)findViewById(R.id.latitude);
         longitude = (TextView)findViewById(R.id.longitude);
         dateText=(TextView)findViewById(R.id.date);
+        certainty_factor=(TextView)findViewById(R.id.certainty_factor);
+        inspection_object=(TextView)findViewById(R.id.inspection_object);
 
         /*CameraPreviewActivityからIntentを通じて送った写真の情報をもらって変数に保存します。
         * 撮影日時、検査項目、検査物品、ファイル名*/
