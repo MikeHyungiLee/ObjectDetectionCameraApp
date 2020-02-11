@@ -7,23 +7,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--撮った写真のImageView-->
-
-    <!--撮影日時(今は任意データ)-->
-
-    <!--検査項目(今は任意でアンカ)-->
-
-    <!--確信度(今は任意データ)-->
+    <TextView
+        android:id="@+id/inspection_object"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.017"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01"
+        tools:text="検査項目名" />
 
     <TextView
         android:id="@+id/certainty_factor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="712dp"
-        android:inputType="numberDecimal"
         android:text="99.9"
         android:textColor="#ff000000"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.014"
@@ -33,15 +38,15 @@
 
     <ImageView
         android:id="@+id/picture"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="20dp"
         android:scaleType="centerCrop"
         android:src="@drawable/camera"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,12 +54,10 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:text="@string/location"
         android:textColor="#ff000000"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnRetake"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -69,7 +72,8 @@
         app:layout_constraintEnd_toStartOf="@+id/latitude"
         app:layout_constraintHorizontal_bias="0.68"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toTopOf="@+id/textView6" />
+        app:layout_constraintTop_toTopOf="@+id/textView6"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView8"
@@ -88,13 +92,12 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="30dp"
         android:text="@string/item"
         android:textColor="#ff000000"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/inspection_item"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/picture" />
 
@@ -102,7 +105,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:text="@string/date"
         android:textColor="#ff000000"
         android:textSize="15sp"
@@ -172,9 +175,9 @@
         android:textColor="#ff000000"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView8"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/latitude"
         app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/latitude"
         app:layout_constraintTop_toBottomOf="@+id/latitude"
         app:layout_constraintVertical_bias="1.0"
         tools:text="0.0" />
@@ -189,11 +192,27 @@
         android:onClick="onClick"
         android:text="@string/reshot"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnSave"
+        app:layout_constraintBottom_toTopOf="@+id/btnchkpic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <Button
+        android:id="@+id/btnchkpic"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/save_button"
+        android:onClick="onClick"
+        android:text="写真検査"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRetake" />
 
     <Button
         android:id="@+id/btnSave"
@@ -207,9 +226,8 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRetake"
-        app:layout_constraintVertical_bias="0.365" />
+        app:layout_constraintTop_toBottomOf="@+id/btnchkpic" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
