@@ -17,6 +17,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -35,13 +36,26 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.hyungilee.objectdetectioncameraapp.R;
 import com.hyungilee.objectdetectioncameraapp.db.HistoryDatabase;
 import com.hyungilee.objectdetectioncameraapp.db.HistoryDbHelper;
+import com.hyungilee.objectdetectioncameraapp.tensorflow.Classifier;
+import com.hyungilee.objectdetectioncameraapp.tensorflow.TensorFlowImageClassifier;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static com.hyungilee.objectdetectioncameraapp.fragment.ObjectListFragment.EXTRA_STRING_SELECT_MENU;
 import static com.hyungilee.objectdetectioncameraapp.utility.Constant.EXTRA_STRING_FILE_NAME;
 import static com.hyungilee.objectdetectioncameraapp.utility.Constant.EXTRA_STRING_IMAGE_FILE_PATH;
 import static com.hyungilee.objectdetectioncameraapp.utility.Constant.EXTRA_STRING_TIME_STAMP;
+import static com.hyungilee.objectdetectioncameraapp.utility.Constant.IMAGE_MEAN;
+import static com.hyungilee.objectdetectioncameraapp.utility.Constant.IMAGE_STD;
+import static com.hyungilee.objectdetectioncameraapp.utility.Constant.INPUT_HEIGHT;
+import static com.hyungilee.objectdetectioncameraapp.utility.Constant.INPUT_NAME;
+import static com.hyungilee.objectdetectioncameraapp.utility.Constant.INPUT_WIDTH;
+import static com.hyungilee.objectdetectioncameraapp.utility.Constant.LABEL_FILE;
+import static com.hyungilee.objectdetectioncameraapp.utility.Constant.MODEL_FILE;
+import static com.hyungilee.objectdetectioncameraapp.utility.Constant.OUTPUT_NAME;
 
 
 /**
@@ -89,8 +103,13 @@ public class PictureCheckActivity extends AppCompatActivity {
     /*SelectObjectActivity画面で選択した項目名*/
     String menu;
 
+    /**写真の検査の結果の表示(テキストビュー)*/
+    TextView resultText;
+
     /** データ保存のため、HistoryDbHelper.javaを読んでくる */
     private HistoryDbHelper dbHelper;
+
+    private Classifier classifier = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -105,6 +124,8 @@ public class PictureCheckActivity extends AppCompatActivity {
         /** menu barの名前を指定 */
         actionBar.setTitle(R.string.check);
 
+        initializeTensorClassifier();
+
         dbHelper = new HistoryDbHelper(this);
 
         imageview=(ImageView)findViewById(R.id.picture);
@@ -115,6 +136,7 @@ public class PictureCheckActivity extends AppCompatActivity {
         dateText=(TextView)findViewById(R.id.date);
         certainty_factor=(TextView)findViewById(R.id.certainty_factor);
         inspection_object=(TextView)findViewById(R.id.inspection_object);
+        resultText=(TextView)findViewById(R.id.result_txt);
 
         /*CameraPreviewActivityからIntentを通じて送った写真の情報をもらって変数に保存します。
         * 撮影日時、検査項目、検査物品、ファイル名*/
@@ -230,7 +252,61 @@ public class PictureCheckActivity extends AppCompatActivity {
                 startActivity(toTop);
 
                 break;
+
+            case R.id.btnchkpic:
+                String path = getIntent().getStringExtra(EXTRA_STRING_IMAGE_FILE_PATH);
+                /*写真を撮った後,保存されたファイル経路を利用してdecodeFileを利用してBitmapファイルに変換します。その後,写真をImageViewに表示します。*/
+                File imgFile=new File(path);
+                Bitmap pictureBitmap= BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+                Bitmap scaledBitmap = Bitmap.createScaledBitmap(pictureBitmap, 300, 300, false);
+
+                try {
+                    classifier = TensorFlowImageClassifier.create(
+                                    getAssets(), MODEL_FILE, LABEL_FILE, INPUT_WIDTH, INPUT_HEIGHT,
+                                    IMAGE_MEAN, IMAGE_STD, INPUT_NAME, OUTPUT_NAME);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+
+                /** Tensorflowを使って撮影した写真を検査する */
+                try {
+                    showRecognizedResult(classifier.recognizeImage(scaledBitmap));
+                } catch (RuntimeException e) {
+                    e.printStackTrace();
+                }
+
         }
+    }
+
+    private void initializeTensorClassifier() {
+            try {
+                classifier = TensorFlowImageClassifier.create(
+                        getAssets(), MODEL_FILE, LABEL_FILE, INPUT_WIDTH, INPUT_HEIGHT,
+                        IMAGE_MEAN, IMAGE_STD, INPUT_NAME, OUTPUT_NAME);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+    }
+
+    private void showRecognizedResult(final List<Classifier.Recognition> results){
+        Runnable action = new Runnable(){
+            @Override
+            public void run() {
+                if(results.isEmpty()){
+                    resultText.setText("イメージは検査項目と不一致です。");
+                }else{
+                    String hero = results.get(0).getTitle();
+                    Float confidence = results.get(0).getConfidence();
+                    resultText.setText((confidence > 0.95)?"イメージは検査項目と一致します。":"イメージは検査項目と不一致です。");
+                }
+            }
+        };
+        runOnUiThread(action);
+    }
+
+    /**Tensorflowを使って撮影した写真を検査するメソット*/
+    public void checkPic(){
+
     }
 
     /** ユーザが撮影した写真と情報をデータベースに保存する */

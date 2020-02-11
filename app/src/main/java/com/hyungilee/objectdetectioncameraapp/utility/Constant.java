@@ -29,8 +29,6 @@ public class Constant {
     /* 撮影した写真とCSVファイルとイメージが保存される位置 */
     public static final File savePath = Environment.getExternalStoragePublicDirectory(EXTRA_STRING_SAVE_FOLDER_NAME);
 
-
-
     /*intent宣言する時,次のページに送る変数のkeyの部分を常数化*/
 
     /* CameraPreviewActivity.java: */
@@ -43,5 +41,12 @@ public class Constant {
     /*保存される写真ファイル名を保存する変数*/
     public static final String EXTRA_STRING_FILE_NAME="fileName";
 
-
+    public static final Integer INPUT_WIDTH = 300;
+    public static final Integer INPUT_HEIGHT = 300;
+    public static final Integer IMAGE_MEAN = 128;
+    public static final Float IMAGE_STD = 128f;
+    public static final String INPUT_NAME = "Mul";
+    public static final String OUTPUT_NAME = "final_result";
+    public static final String MODEL_FILE = "file:///android_asset/hero_stripped_graph.pb";
+    public static final String LABEL_FILE = "file:///android_asset/hero_labels.txt";
 }
